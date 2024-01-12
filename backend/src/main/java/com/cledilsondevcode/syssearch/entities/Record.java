@@ -3,20 +3,27 @@ package com.cledilsondevcode.syssearch.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_record")
-public class Record implements Serializable {
+public class Record  {
 
-    private static final long serialVersionUID = 1L;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "age")
     private Integer age;
-    private Integer moment;
+
+    @Column(name = "moment")
+    private Instant moment;
 
     @ManyToOne
     @JoinColumn(name = "game_id")
@@ -25,7 +32,7 @@ public class Record implements Serializable {
     public Record() {
     }
 
-    public Record(Long id, String name, Integer age, Integer moment, Game game) {
+    public Record(Long id, String name, Integer age, Instant moment, Game game) {
         super();
         this.id = id;
         this.name = name;
@@ -58,11 +65,11 @@ public class Record implements Serializable {
         this.age = age;
     }
 
-    public Integer getMoment() {
+    public Instant getMoment() {
         return moment;
     }
 
-    public void setMoment(Integer moment) {
+    public void setMoment(Instant moment) {
         this.moment = moment;
     }
 
