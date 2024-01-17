@@ -1,6 +1,7 @@
 package com.cledilsondevcode.syssearch.entities;
 
 import com.cledilsondevcode.syssearch.entities.enums.Platform;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -22,9 +23,12 @@ public class Game {
 
     private Platform platform;
 
+
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
+
+
     @OneToMany(mappedBy = "game")
     private List<Record> records = new ArrayList<>();
 
